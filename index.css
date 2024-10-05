@@ -1,0 +1,26 @@
+@font-face {
+  font-family: "Geist";
+  src: url("fonts/Geist[wght].woff2") format("woff2");
+}
+* {
+  font-family: "Geist", sans-serif;
+  scroll-behavior: smooth;
+}
+.hidden-menu {
+  display: none;
+}
+.navbar {
+  transition: background-color 0.3s ease-in-out;
+}
+.navbar.scrolled {
+  background-color: white;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-text {
+  transition: 0.3s ease-in-out;
+}
+
+.navbar-text.text-scrolled {
+  color: rgb(17 24 39);
+}
