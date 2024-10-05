@@ -1,0 +1,747 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Homework 🚀 HTML + CSS</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="index.js"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      @font-face {
+        font-family: "Geist";
+        src: url("fonts/Geist[wght].woff2") format("woff2");
+      }
+      * {
+        font-family: "Geist", sans-serif;
+        scroll-behavior: smooth;
+      }
+      .hidden-menu {
+        display: none;
+      }
+      .navbar {
+        transition: background-color 0.3s ease-in-out;
+      }
+      .navbar.scrolled {
+        background-color: white;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      }
+
+      .navbar-text {
+        transition: 0.3s ease-in-out;
+      }
+
+      .navbar-text.text-scrolled {
+        color: rgb(17 24 39);
+      }
+    </style>
+  </head>
+  <body>
+    <div>
+      <header class="fixed inset-x-0 top-0 z-50 navbar" id="navbar">
+        <nav
+          class="flex items-center justify-between p-6 lg:px-8"
+          aria-label="Global"
+        >
+          <div class="flex lg:flex-1">
+            <a href="#home" class="-m-1.5 p-1.5">
+              <!-- <span class="sr-only">Your Company</span> -->
+              <img
+                class="h-10 w-auto"
+                id="logo-image"
+                src="/image/logo-1.png"
+                alt="Logo"
+              />
+            </a>
+          </div>
+          <div class="flex lg:hidden">
+            <button
+              id="open-menu-button"
+              type="button"
+              class="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700"
+            >
+              <span class="sr-only">Open main menu</span>
+              <svg
+                class="h-6 w-6"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="1.5"
+                stroke="currentColor"
+                aria-hidden="true"
+                data-slot="icon"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
+                />
+              </svg>
+            </button>
+          </div>
+          <div class="hidden lg:flex lg:gap-x-12">
+            <a
+              href="#home"
+              class="navbar-text font-semibold leading-6 text-white"
+              >Home</a
+            >
+            <a
+              href="#content"
+              class="text-md navbar-text font-semibold leading-6 text-white"
+              >Content</a
+            >
+            <a
+              href="#gallery"
+              class="text-md navbar-text font-semibold leading-6 text-white"
+              >Gallery</a
+            >
+            <a
+              href="#company"
+              class="text-md navbar-text font-semibold leading-6 text-white"
+              >Company</a
+            >
+          </div>
+        </nav>
+        <!-- Mobile menu, show/hide based on menu open state. -->
+        <div
+          id="mobile-menu"
+          class="lg:hidden hidden-menu"
+          role="dialog"
+          aria-modal="true"
+        >
+          <!-- Background backdrop, show/hide based on slide-over state. -->
+          <div class="fixed inset-0 z-50 backdrop-blur-sm"></div>
+          <div
+            class="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10"
+          >
+            <div class="flex items-center justify-between">
+              <a href="#home" class="-m-1.5 p-1.5">
+                <span class="sr-only">Your Company</span>
+                <img class="h-8 w-auto" src="image/logo.png" alt="" />
+              </a>
+              <button
+                type="button"
+                id="close-menu-button"
+                class="-m-2.5 rounded-md p-2.5 text-gray-700"
+              >
+                <span class="sr-only">Close menu</span>
+                <svg
+                  class="h-6 w-6"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke-width="1.5"
+                  stroke="currentColor"
+                  aria-hidden="true"
+                  data-slot="icon"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M6 18 18 6M6 6l12 12"
+                  />
+                </svg>
+              </button>
+            </div>
+            <div class="mt-6 flow-root">
+              <div class="-my-6 divide-y divide-gray-500/10">
+                <div class="space-y-2 py-6">
+                  <a
+                    href="#home"
+                    class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
+                    >Home</a
+                  >
+                  <a
+                    href="#content"
+                    class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
+                    >Content</a
+                  >
+                  <a
+                    href="#gallery"
+                    class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
+                    >Gallery</a
+                  >
+                  <a
+                    href="#company"
+                    class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
+                    >Company</a
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <div
+        id="home"
+        class="relative px-6 pt-14 bg-[url('https://images.unsplash.com/photo-1598675551183-1b091d43f99f?q=80&w=1592&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')] bg-cover lg:px-8"
+      >
+        <div class="mx-auto max-w-2xl py-32 sm:py-36 lg:py-40">
+          <div class="hidden sm:mb-8 sm:flex sm:justify-center">
+            <div
+              onclick="smoothScroll('content')"
+              class="relative rounded-full px-3 py-1 text-sm leading-6 text-white hover:ring-white ring-1 ring-white hover:scale-110 transition ease-in-out duration-200"
+            >
+              Wisata seru tanpa ragu.
+              <a class="font-semibold text-lime-300"
+                ><span class="absolute inset-0" aria-hidden="true"></span>Baca
+                selengkapnya <span aria-hidden="true">&rarr;</span></a
+              >
+            </div>
+          </div>
+          <div class="text-center">
+            <h1
+              class="text-balance text-4xl font-bold tracking-tight text-white sm:text-6xl"
+            >
+              Temukan tempat <span class="text-lime-300"> wisata </span>anda
+              sekarang
+            </h1>
+            <p class="mt-6 text-lg leading-8 text-white">
+              Nikmati momen berharga dengan pemandangan indah dan destinasi unik
+              yang kami tawarkan. Setiap perjalanan akan menghadirkan keindahan
+              alam, budaya, dan sejarah yang menakjubkan.
+            </p>
+            <div class="mt-10 flex items-center justify-center gap-x-6">
+              <a
+                onclick="smoothScroll('content')"
+                class="rounded-md bg-[#72BF78] px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-[#61AE67] transition ease-in-out duration-500"
+                >Pelajari selengkapnya</a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="relative isolate py-28" id="content">
+      <div
+        class="absolute -top-40 -z-[999] transform-gpu overflow-hidden blur-3xl sm:-top-100"
+        aria-hidden="true"
+      >
+        <div
+          class="relative left-[calc(50%-11rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 rotate-[30deg] bg-gradient-to-tr from-green-500 to-green-900 opacity-30 sm:left-[calc(50%-30rem)] sm:w-[72.1875rem]"
+          style="
+            clip-path: polygon(
+              74.1% 44.1%,
+              100% 61.6%,
+              97.5% 26.9%,
+              85.5% 0.1%,
+              80.7% 2%,
+              72.5% 32.5%,
+              60.2% 62.4%,
+              52.4% 68.1%,
+              47.5% 58.3%,
+              45.2% 34.5%,
+              27.5% 76.7%,
+              0.1% 64.9%,
+              17.9% 100%,
+              27.6% 76.8%,
+              76.1% 97.7%,
+              74.1% 44.1%
+            );
+          "
+        ></div>
+      </div>
+      <div class="mx-auto max-w-7xl px-6 lg:px-8">
+        <div
+          class="mx-0 flex lg:flex-row flex-col justify-between px-3 lg:text-start text-center lg:mx-0"
+        >
+          <div class="flex flex-col">
+            <h2
+              class="text-3xl font-semibold tracking-tight text-gray-900 sm:text-5xl"
+            >
+              Konten wisata
+            </h2>
+            <p class="mt-2 text-lg leading-8 text-gray-600">
+              Cari tempat wisata yang seru, enak dan murah!
+            </p>
+          </div>
+
+          <a
+            href="#"
+            class="hover:underline hover:scale-110 transition ease-in-out duration-700 lg:mt-0 mt-5 font-bold text-[#72BF78]"
+            ><span class="" aria-hidden="true"></span>Baca selengkapnya
+            <span aria-hidden="true">&rarr;</span></a
+          >
+        </div>
+        <div
+          class="mx-auto mt-10 pt-6 grid max-w-2xl grid-cols-1 gap-x-8 gap-y-8 lg:mx-0 lg:max-w-none lg:grid-cols-3"
+        >
+          <div
+            class="relative grid h-[30rem] w-full flex-col items-end overflow-hidden rounded-lg bg-white hover:shadow-xl hover:scale-105 transition-all ease-in-out duration-500"
+          >
+            <a href="#">
+              <div
+                class="absolute inset-0 m-0 h-full w-full overflow-hidden rounded-none bg-transparent bg-[url('https://images.unsplash.com/photo-1569418122371-ffc2554a3981?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')] bg-cover bg-center"
+              >
+                <div
+                  class="to-bg-black-10 absolute inset-0 h-full w-full bg-gradient-to-t from-black/80 via-black/50"
+                ></div>
+              </div>
+
+              <div class="relative px-6 py-6">
+                <div
+                  class="flex items-center gap-x-6 lg:justify-start justify-between text-xs mb-3"
+                >
+                  <time datetime="2020-03-16" class="text-gray-400"
+                    >Okt 17, 2020</time
+                  >
+                  <div class="flex items-center gap-x-3">
+                    <img
+                      src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                      alt=""
+                      class="h-6 w-6 rounded-full object-cover bg-gray-50"
+                    />
+
+                    <div class="text-xs leading-6">
+                      <p class="text-gray-300">
+                        <a href="#"> Ariana Silvy </a>
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <h2 class="mb-3 text-2xl font-medium text-white">
+                  Wisata di Amerika kemana aja ya?
+                </h2>
+                <h5 class="mb-2 text-sm text-slate-200">
+                  Sangat banyak tempat yang dapat dikunjungi ketika anda liburan
+                  ke Amerika Serikat...
+                </h5>
+              </div>
+            </a>
+          </div>
+          <div
+            class="relative grid h-[30rem] w-full flex-col items-end overflow-hidden rounded-lg bg-white hover:shadow-xl hover:scale-105 transition-all ease-in-out duration-500"
+          >
+            <a href="#">
+              <div
+                class="absolute inset-0 m-0 h-full w-full overflow-hidden rounded-none bg-transparent bg-[url('https://images.unsplash.com/photo-1561025479-be449081f706?q=80&w=1477&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')] bg-cover bg-center"
+              >
+                <div
+                  class="to-bg-black-10 absolute inset-0 h-full w-full bg-gradient-to-t from-black/80 via-black/50"
+                ></div>
+              </div>
+
+              <div class="relative px-6 py-6">
+                <div
+                  class="flex items-center gap-x-6 lg:justify-start justify-between text-xs mb-3"
+                >
+                  <time datetime="2020-03-16" class="text-gray-400"
+                    >Jun 11, 2018</time
+                  >
+                  <div class="flex items-center gap-x-3">
+                    <img
+                      src="https://images.unsplash.com/photo-1519244703995-f4e0f30006d5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+                      alt=""
+                      class="h-6 w-6 rounded-full bg-gray-50 object-cover"
+                    />
+
+                    <div class="text-xs leading-6">
+                      <p class="text-gray-300">
+                        <a href="#"> Michael Foster </a>
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <h2 class="mb-3 text-2xl font-medium text-white">
+                  Chichen Itza mirip dengan Pyramid?
+                </h2>
+                <h5 class="mb-2 text-sm text-slate-200">
+                  Kalau kamu liburan ke Meksiko, jangan lupa untuk mampir ke
+                  beberapa tempat ini...
+                </h5>
+              </div>
+            </a>
+          </div>
+          <div
+            class="relative grid h-[30rem] w-full flex-col items-end overflow-hidden rounded-lg bg-white hover:shadow-xl hover:scale-105 transition-all ease-in-out duration-500"
+          >
+            <a href="#">
+              <div
+                class="absolute inset-0 m-0 h-full w-full overflow-hidden rounded-none bg-transparent bg-[url('https://images.unsplash.com/photo-1503177119275-0aa32b3a9368?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')] bg-cover bg-center"
+              >
+                <div
+                  class="to-bg-black-10 absolute inset-0 h-full w-full bg-gradient-to-t from-black/80 via-black/50"
+                ></div>
+              </div>
+
+              <div class="relative px-6 py-6">
+                <div
+                  class="flex items-center gap-x-6 lg:justify-start justify-between text-xs mb-3"
+                >
+                  <time datetime="2020-03-16" class="text-gray-400"
+                    >Jan 22, 2020</time
+                  >
+                  <div class="flex items-center gap-x-3">
+                    <img
+                      src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=1364&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                      alt=""
+                      class="h-6 w-6 rounded-full bg-gray-50 object-cover"
+                    />
+
+                    <div class="text-xs leading-6">
+                      <p class="text-gray-300">
+                        <a href="#"> Maria Lisa </a>
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <h2 class="mb-3 text-2xl font-medium text-white">
+                  Wisata ke Mesir bisa lihat banyak harta karun!
+                </h2>
+                <h5 class="mb-2 text-sm text-slate-200">
+                  Ini dia pyramid atau piramida tempat dimana banyak sekali
+                  harta karun tersembunyi di dalamnya...
+                </h5>
+              </div>
+            </a>
+          </div>
+          <div
+            class="relative grid h-[30rem] w-full flex-col items-end overflow-hidden rounded-lg bg-white hover:shadow-xl hover:scale-105 transition-all ease-in-out duration-500"
+          >
+            <a href="#">
+              <div
+                class="absolute inset-0 m-0 h-full w-full overflow-hidden rounded-none bg-transparent bg-[url('https://images.unsplash.com/photo-1598675551183-1b091d43f99f?q=80&w=1592&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')] bg-cover bg-center"
+              >
+                <div
+                  class="to-bg-black-10 absolute inset-0 h-full w-full bg-gradient-to-t from-black/80 via-black/50"
+                ></div>
+              </div>
+
+              <div class="relative px-6 py-6">
+                <div
+                  class="flex items-center gap-x-6 lg:justify-start justify-between text-xs mb-3"
+                >
+                  <time datetime="2020-03-16" class="text-gray-400"
+                    >Okt 1, 2024</time
+                  >
+                  <div class="flex items-center gap-x-3">
+                    <img
+                      src="https://images.unsplash.com/photo-1603696774332-6dcf0e5aa964?q=80&w=1472&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                      alt=""
+                      class="h-6 w-6 rounded-full bg-gray-50 object-cover"
+                    />
+
+                    <div class="text-xs leading-6">
+                      <p class="text-gray-300">
+                        <a href="#"> Hadi Utama </a>
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <h2 class="mb-3 text-2xl font-medium text-white">
+                  Yuk mampir ke kota tertua se-Indonesia!
+                </h2>
+                <h5 class="mb-2 text-sm text-slate-200">
+                  Palembang merupakan kota tertua se-Indonesia yang sekarang
+                  berumur sekitar 1337 Tahun...
+                </h5>
+              </div>
+            </a>
+          </div>
+          <div
+            class="relative grid h-[30rem] w-full flex-col items-end overflow-hidden rounded-lg bg-white hover:shadow-xl hover:scale-105 transition-all ease-in-out duration-500"
+          >
+            <a href="#">
+              <div
+                class="absolute inset-0 m-0 h-full w-full overflow-hidden rounded-none bg-transparent bg-[url('https://images.unsplash.com/photo-1636984011278-886b13d0772d?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')] bg-cover bg-center"
+              >
+                <div
+                  class="to-bg-black-10 absolute inset-0 h-full w-full bg-gradient-to-t from-black/80 via-black/50"
+                ></div>
+              </div>
+
+              <div class="relative px-6 py-6">
+                <div
+                  class="flex items-center gap-x-6 lg:justify-start justify-between text-xs mb-3"
+                >
+                  <time datetime="2020-03-16" class="text-gray-400"
+                    >Sep 30, 2024</time
+                  >
+                  <div class="flex items-center gap-x-3">
+                    <img
+                      src="https://images.unsplash.com/photo-1557862921-37829c790f19?q=80&w=1471&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                      alt=""
+                      class="h-6 w-6 rounded-full bg-gray-50 object-cover"
+                    />
+
+                    <div class="text-xs leading-6">
+                      <p class="text-gray-300">
+                        <a href="#"> Ali Zaheer </a>
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <h2 class="mb-3 text-2xl font-medium text-white">
+                  Simbol perdamaian antar umat beragama di Jakarta
+                </h2>
+                <h5 class="mb-2 text-sm text-slate-200">
+                  Menjadi simbol perdamaian antar umar beragama, Masjid Istiqlal
+                  menjadi salah satu pusat wisata...
+                </h5>
+              </div>
+            </a>
+          </div>
+        </div>
+        <div
+          class="absolute inset-x-0 top-[calc(100%-13rem)] -z-10 transform-gpu overflow-hidden blur-3xl sm:top-[calc(100%-50rem)]"
+          aria-hidden="true"
+        >
+          <div
+            class="relative left-[calc(50%+3rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 bg-gradient-to-tr from-green-500 to-green-900 opacity-30 sm:left-[calc(50%+36rem)] sm:w-[72.1875rem]"
+            style="
+              clip-path: polygon(
+                74.1% 44.1%,
+                100% 61.6%,
+                97.5% 26.9%,
+                85.5% 0.1%,
+                80.7% 2%,
+                72.5% 32.5%,
+                60.2% 62.4%,
+                52.4% 68.1%,
+                47.5% 58.3%,
+                45.2% 34.5%,
+                27.5% 76.7%,
+                0.1% 64.9%,
+                17.9% 100%,
+                27.6% 76.8%,
+                76.1% 97.7%,
+                74.1% 44.1%
+              );
+            "
+          ></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="bg-gradient-to-b from-white to-[#C6E5C8] py-28" id="gallery">
+      <div class="mx-auto max-w-2xl px-6 lg:max-w-7xl lg:px-8">
+        <h2 class="text-center text-base/7 font-semibold text-[#72BF78]">
+          Gallery wisata
+        </h2>
+        <p
+          class="mx-auto mt-2 max-w-lg text-pretty text-center text-4xl font-medium tracking-tight text-gray-950 sm:text-5xl"
+        >
+          Temukan tempat wisata yang menarik.
+        </p>
+
+        <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 mt-12">
+          <div class="grid gap-4">
+            <div
+              class="hover:shadow-xl hover:scale-105 transition-all ease-in-out duration-500"
+            >
+              <img
+                class="h-full max-w-full object-cover rounded-lg"
+                src="/image/bg.jpg"
+                alt=""
+              />
+            </div>
+            <div
+              class="hover:shadow-xl hover:scale-105 transition-all ease-in-out duration-500"
+            >
+              <img
+                class="h-full max-w-full object-cover rounded-lg"
+                src="https://images.unsplash.com/photo-1636984011278-886b13d0772d?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                alt=""
+              />
+            </div>
+            <div
+              class="hover:shadow-xl hover:scale-105 transition-all ease-in-out duration-500"
+            >
+              <img
+                class="h-full max-w-full rounded-lg object-cover"
+                src="https://images.unsplash.com/photo-1598675551183-1b091d43f99f?q=80&w=1592&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                alt=""
+              />
+            </div>
+          </div>
+          <div class="grid gap-4">
+            <div
+              class="hover:shadow-xl hover:scale-105 transition-all ease-in-out duration-500"
+            >
+              <img
+                class="h-full max-w-full rounded-lg object-cover"
+                src="https://images.unsplash.com/photo-1503177119275-0aa32b3a9368?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                alt=""
+              />
+            </div>
+            <div
+              class="hover:shadow-xl hover:scale-105 transition-all ease-in-out duration-500"
+            >
+              <img
+                class="h-full max-w-full object-cover rounded-lg"
+                src="https://images.unsplash.com/photo-1716810876775-a92e775db988?q=80&w=1374&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                alt=""
+              />
+            </div>
+            <div
+              class="hover:shadow-xl hover:scale-105 transition-all ease-in-out duration-500"
+            >
+              <img
+                class="h-full max-w-full object-cover rounded-lg"
+                src="https://images.unsplash.com/photo-1561025479-be449081f706?q=80&w=1477&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                alt=""
+              />
+            </div>
+          </div>
+          <div class="grid gap-4">
+            <div
+              class="hover:shadow-xl hover:scale-105 transition-all ease-in-out duration-500"
+            >
+              <img
+                class="h-full max-w-full object-cover rounded-lg"
+                src="https://images.unsplash.com/photo-1655802437200-ddea124855f8?q=80&w=1374&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                alt=""
+              />
+            </div>
+            <div
+              class="hover:shadow-xl hover:scale-105 transition-all ease-in-out duration-500"
+            >
+              <img
+                class="h-full max-w-full rounded-lg object-cover"
+                src="https://images.unsplash.com/photo-1707282396791-79f6c1186a4f?q=80&w=1589&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                alt=""
+              />
+            </div>
+            <div
+              class="hover:shadow-xl hover:scale-105 transition-all ease-in-out duration-500"
+            >
+              <img
+                class="h-full object-cover max-w-full rounded-lg"
+                src="https://images.unsplash.com/photo-1626014405949-cd273e5048b2?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDN8fHdpc2F0YXxlbnwwfHwwfHx8MA%3D%3D"
+                alt=""
+              />
+            </div>
+          </div>
+          <div class="grid gap-4">
+            <div
+              class="hover:shadow-xl hover:scale-105 transition-all ease-in-out duration-500"
+            >
+              <img
+                class="h-full object-cover max-w-full rounded-lg"
+                src="https://images.unsplash.com/photo-1604361726591-d50d6483a0aa?q=80&w=1517&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                alt=""
+              />
+            </div>
+            <div
+              class="hover:shadow-xl hover:scale-105 transition-all ease-in-out duration-500"
+            >
+              <img
+                class="h-full object-cover max-w-full rounded-lg"
+                src="https://images.unsplash.com/photo-1684039568465-24c31d0cc80f?q=80&w=1527&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                alt=""
+              />
+            </div>
+            <div
+              class="hover:shadow-xl hover:scale-105 transition-all ease-in-out duration-500"
+            >
+              <img
+                class="h-full object-cover max-w-full rounded-lg"
+                src="https://images.unsplash.com/photo-1630214801769-24784bfd2b9c?q=80&w=1471&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                alt=""
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="py-20" id="company">
+      <div class="mx-auto max-w-7xl px-6 lg:px-8">
+        <h2 class="text-center text-2xl font-semibold leading-8 text-gray-900">
+          Dipercaya oleh perusahaan terkemuka di seluruh dunia.
+        </h2>
+        <div
+          class="mx-auto mt-16 grid max-w-lg grid-cols-4 items-center gap-x-8 gap-y-10 sm:max-w-xl sm:grid-cols-6 sm:gap-x-10 lg:mx-0 lg:max-w-none lg:grid-cols-5"
+        >
+          <img
+            class="col-span-2 max-h-12 w-full object-contain lg:col-span-1"
+            src="/image/logo.png"
+            width="158"
+            height="48"
+          />
+          <img
+            class="col-span-2 max-h-12 w-full object-contain lg:col-span-1"
+            src="/image/logo.png"
+            width="158"
+            height="48"
+          />
+          <img
+            class="col-span-2 max-h-12 w-full object-contain lg:col-span-1"
+            src="/image/logo.png"
+            width="158"
+            height="48"
+          />
+          <img
+            class="col-span-2 max-h-12 w-full object-contain sm:col-start-2 lg:col-span-1"
+            src="/image/logo.png"
+            width="158"
+            height="48"
+          />
+          <img
+            class="col-span-2 col-start-2 max-h-12 w-full object-contain sm:col-start-auto lg:col-span-1"
+            src="/image/logo.png"
+            width="158"
+            height="48"
+          />
+        </div>
+      </div>
+    </div>
+
+    <footer class="bg-white dark:bg-gray-900">
+      <div class="mx-auto w-full max-w-screen-xl p-4 py-6 lg:py-8">
+        <div class="md:flex md:justify-between">
+          <div class="mb-6 md:mb-0">
+            <a href="#" class="flex items-center">
+              <img src="/image/logo-1.png" class="ml-3 mb-5 mt-5 w-40" alt="" />
+            </a>
+          </div>
+          <div class="grid gap-8 sm:gap-8 grid-cols-2">
+            <div>
+              <h2
+                class="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white"
+              >
+                Jasa
+              </h2>
+              <ul class="text-gray-500 dark:text-gray-400 font-medium">
+                <li class="mb-4">
+                  <a href="#content" class="hover:underline">Content</a>
+                </li>
+                <li>
+                  <a href="#gallery" class="hover:underline">Gallery</a>
+                </li>
+              </ul>
+            </div>
+            <div>
+              <h2
+                class="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white"
+              >
+                Hubungi kami
+              </h2>
+              <ul class="text-gray-500 dark:text-gray-400 font-medium">
+                <li class="mb-4">
+                  <a href="#" class="hover:underline">Email</a>
+                </li>
+                <li>
+                  <a href="#" class="hover:underline">Whatsapp</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <hr
+          class="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8"
+        />
+        <div class="sm:flex sm:items-center sm:justify-between">
+          <span class="text-sm text-gray-500 sm:text-center dark:text-gray-400"
+            >© 2024 <a href="#" class="hover:underline">Company Name</a>. All
+            Rights Reserved.
+          </span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
