@@ -9,16 +9,17 @@ window.onscroll = function () {
       navbarText.item(index).className =
         " navbar-text font-semibold leading-6 text-white text-scrolled ";
     }
-    logoImage.src = "/image/logo.png";
+    logoImage.src = "image/logo.png";
   } else {
     navbar.classList.remove("scrolled");
     for (let index = 0; index < navbarText.length; index++) {
       navbarText.item(index).className =
         " navbar-text font-semibold leading-6 text-white ";
     }
-    logoImage.src = "/image/logo-1.png";
+    logoImage.src = "image/logo-1.png";
   }
 };
+
 const openMenuButton = document.getElementById("open-menu-button");
 const closeMenuButton = document.getElementById("close-menu-button");
 const mobileMenu = document.getElementById("mobile-menu");
@@ -30,11 +31,3 @@ openMenuButton.addEventListener("click", () => {
 closeMenuButton.addEventListener("click", () => {
   mobileMenu.classList.add("hidden-menu");
 });
-
-function smoothScroll(targetId) {
-  const targetElement = document.getElementById(targetId);
-  window.scrollTo({
-    top: targetElement.offsetTop,
-    behavior: "smooth",
-  });
-}
